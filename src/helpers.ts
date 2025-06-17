@@ -1,6 +1,5 @@
 import { Campings, Camping } from "@/typesCampings";
 
-// This takes your raw nested Drupal response and transforms it
 export function transformCampingsResponse(raw: any): Campings {
   const data: Camping[] = raw.map((item: any) => ({
     nid: item.nid?.[0]?.value ?? 0,

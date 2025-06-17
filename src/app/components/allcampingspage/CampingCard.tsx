@@ -11,7 +11,7 @@ const CampingCard = ({ camping }: { camping: Camping }) => {
             width={350}
             height={250}
             alt={camping.title}
-            className="w-auto h-auto aspect-[3/2] object-cover hover:scale-110 transition-all ease-in-out duration-500 rounded-2xl shadow-xl/30"
+            className="w-auto h-auto aspect-[2/2] object-cover hover:scale-110 transition-all ease-in-out duration-500 rounded-2xl shadow-xl/30"
           />
         </div>
         <p className="font-bold text-xl text-center p-2">{camping.title}</p>

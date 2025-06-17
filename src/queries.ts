@@ -29,3 +29,24 @@ export const getCampingById = async (id: string): Promise<Camping> => {
     throw error;
   }
 };
+export const getAllArticles = async () => {
+  try {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "api/v1/articles", {
+      next: {
+        revalidate: 60,
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    throw error;
+  }
+};
+export const getArticleById = async () => {
+  try {
+  } catch (error) {
+    console.error("Error fetching article:", error);
+    throw error;
+  }
+};
