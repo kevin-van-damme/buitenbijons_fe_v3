@@ -1,7 +1,6 @@
 import { getAllCampings } from "@/queries";
 import { Camping } from "@/typesCampings";
 import { transformCampingsResponse } from "@/helpers";
-import Link from "next/link";
 import CampingCard from "../components/allcampingspage/CampingCard";
 
 export default async function AllCampingsPage() {
@@ -26,7 +25,4 @@ export default async function AllCampingsPage() {
       </div>
     </div>
   );
-}
-{
-  /* <pre>{JSON.stringify(campings, null, 2)}</pre> */
 }
