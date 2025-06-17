@@ -3,62 +3,55 @@ export interface Campings {
 }
 
 export interface Camping {
-  nid: Nid[];
-  uuid: FieldCampingCheckinout[];
-  vid: Nid[];
-  langcode: FieldCampingCheckinout[];
-  type: Type[];
-  revision_timestamp: Changed[];
-  revision_uid: FieldCampingCity[];
-  status: DefaultLangcode[];
-  uid: FieldCampingCity[];
-  title: FieldCampingCheckinout[];
-  created: Changed[];
-  changed: Changed[];
-  promote: DefaultLangcode[];
-  sticky: DefaultLangcode[];
-  default_langcode: DefaultLangcode[];
-  revision_translation_affected: DefaultLangcode[];
-  path: Path[];
-  field_camping_checkinout: FieldCampingCheckinout[];
-  field_camping_city: FieldCampingCity[];
-  field_camping_country: FieldCampingCity[];
-  field_camping_description: FieldCamping[];
-  field_camping_image: FieldCampingImage[];
-  field_camping_location: FieldCampingLocation[];
-  field_camping_price: FieldCampingCheckinout[];
-  field_camping_rules: FieldCamping[];
-  field_owner_id: FieldCampingCity[];
+  nid: number;
+  uuid: string;
+  vid: number;
+  langcode: string;
+  type: string;
+  revision_timestamp: Date;
+  revision_uid: number;
+  status: boolean;
+  uid: number;
+  title: string;
+  created: Date;
+  changed: Date;
+  promote: boolean;
+  sticky: boolean;
+  default_langcode: boolean;
+  revision_translation_affected: boolean;
+  path: Path;
+  field_camping_checkinout: string;
+  field_camping_city: EntityReference;
+  field_camping_country: EntityReference;
+  field_camping_description: TextField;
+  field_camping_image: ImageField;
+  field_camping_location: LocationField;
+  field_camping_price: string;
+  field_camping_rules: TextField;
+  field_owner_id: EntityReference;
 }
 
-export interface Changed {
-  value: Date;
-  format: string;
+export interface Path {
+  alias: string;
+  pid: number;
+  langcode: string;
 }
 
-export interface DefaultLangcode {
-  value: boolean;
-}
-
-export interface FieldCampingCheckinout {
-  value: string;
-}
-
-export interface FieldCampingCity {
+export interface EntityReference {
   target_id: number;
   target_type: string;
   target_uuid: string;
   url: string;
 }
 
-export interface FieldCamping {
+export interface TextField {
   value: string;
   format: string;
   processed: string;
   summary: string;
 }
 
-export interface FieldCampingImage {
+export interface ImageField {
   target_id: number;
   alt: string;
   title: string;
@@ -69,7 +62,7 @@ export interface FieldCampingImage {
   url: string;
 }
 
-export interface FieldCampingLocation {
+export interface LocationField {
   value: string;
   geo_type: string;
   lat: number;
@@ -80,20 +73,4 @@ export interface FieldCampingLocation {
   bottom: number;
   geohash: string;
   latlon: string;
-}
-
-export interface Nid {
-  value: number;
-}
-
-export interface Path {
-  alias: string;
-  pid: number;
-  langcode: string;
-}
-
-export interface Type {
-  target_id: string;
-  target_type: string;
-  target_uuid: string;
 }

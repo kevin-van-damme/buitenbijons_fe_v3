@@ -4,7 +4,14 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["react-leaflet"],
   images: {
-    domains: ["your-drupal-site.com"], // Add if serving images from Drupal
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "be-buitenbijons-test.ddev.site",
+        port: "33003",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

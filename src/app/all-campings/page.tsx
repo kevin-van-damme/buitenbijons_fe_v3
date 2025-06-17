@@ -1,21 +1,23 @@
 import { getAllCampings } from "@/queries";
-import { Camping, Campings } from "@/typesCampings";
+import { Camping } from "@/typesCampings";
+import { transformCampingsResponse } from "@/helpers";
 import Link from "next/link";
+import CampingCard from "../components/allcampingspage/CampingCard";
 
 export default async function AllCampingsPage() {
-  const campings = await getAllCampings();
-  console.log(campings);
+  const rawData = await getAllCampings();
+  const campings = transformCampingsResponse(rawData);
 
   return (
     <div>
-      <h1>All Campings</h1>
-      <div>
-        <ul>
+      <h1 className="text-5xl font-bold text-center my-20">All Campings</h1>
+      <div className="w-7xl mx-auto">
+        <ul className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-10 px-2">
           {campings?.data?.length > 0 ? (
             campings.data.map((camping: Camping) => (
-              <Link href={`/campings/${camping.uuid[0].value}`} key={camping.nid[0].value}>
-                <li>{camping.title[0].value}</li>
-              </Link>
+              <li key={camping.uuid}>
+                <CampingCard camping={camping} />
+              </li>
             ))
           ) : (
             <li>No campings found</li>
@@ -24,4 +26,7 @@ export default async function AllCampingsPage() {
       </div>
     </div>
   );
+}
+{
+  /* <pre>{JSON.stringify(campings, null, 2)}</pre> */
 }

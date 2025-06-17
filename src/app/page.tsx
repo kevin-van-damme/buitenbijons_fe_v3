@@ -1,9 +1,11 @@
 import AllCampingsPage from "./all-campings/page";
+import HomePageBody from "./components/homepage/HomePageBody";
+import HomePageImage from "./components/homepage/HomePageImage";
 
 const page = () => {
   return (
     <div>
-      <AllCampingsPage />
+      <HomePageBody />
     </div>
   );
 };
