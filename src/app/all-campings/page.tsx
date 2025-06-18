@@ -11,7 +11,7 @@ export default async function AllCampingsPage() {
     <div className="max-w-7xl mx-auto">
       <h1 className="text-5xl font-bold text-center my-20">All Campings</h1>
       <div>
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-10 px-2">
+        <ul className="grid [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))] gap-10 px-2" id="campings">
           {campings?.data?.length > 0 ? (
             campings.data.map((camping: Camping) => (
               <li key={camping.uuid}>
