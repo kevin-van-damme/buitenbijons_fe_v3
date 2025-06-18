@@ -1,5 +1,5 @@
 import type { Campings, Camping } from "./typesCampings";
-
+import { transformCampingResponse } from "./helpers";
 //GET ALL CAMPINGS
 export const getAllCampings = async (): Promise<Campings> => {
   try {
@@ -15,20 +15,19 @@ export const getAllCampings = async (): Promise<Campings> => {
     throw error;
   }
 };
-export const getCampingById = async (id: string): Promise<Camping> => {
+export const getCampingById = async (id: string): Promise<Camping | null> => {
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "api/v1/all-campings/" + id, {
-      next: {
-        revalidate: 60,
-      },
-    });
-    const data: Camping = await res.json();
-    return data;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/all-campings/${id}`);
+    if (!res.ok) throw new Error("Failed to fetch camping");
+    const raw = await res.json();
+    const camping = transformCampingResponse(raw[0]);
+    return camping;
   } catch (error) {
     console.error("Error fetching camping:", error);
-    throw error;
+    return null;
   }
 };
+
 export const getAllArticles = async () => {
   try {
     const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "api/v1/articles", {

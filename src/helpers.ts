@@ -1,7 +1,7 @@
 import { Campings, Camping } from "@/typesCampings";
 
-export function transformCampingsResponse(raw: any): Campings {
-  const data: Camping[] = raw.map((item: any) => ({
+export function transformCampingResponse(item: any): Camping {
+  return {
     nid: item.nid?.[0]?.value ?? 0,
     uuid: item.uuid?.[0]?.value ?? "",
     vid: item.vid?.[0]?.value ?? 0,
@@ -52,7 +52,10 @@ export function transformCampingsResponse(raw: any): Campings {
     field_camping_price: item.field_camping_price?.[0]?.value ?? "",
     field_camping_rules: item.field_camping_rules?.[0]?.value ?? "",
     field_owner_id: item.field_owner_id?.[0]?.target_id ?? 0,
-  }));
+  };
+}
 
+export function transformCampingsResponse(raw: any): Campings {
+  const data: Camping[] = raw.map((item: any) => transformCampingResponse(item));
   return { data };
 }
