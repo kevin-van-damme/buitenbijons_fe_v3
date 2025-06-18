@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Camping } from "@/typesCampings";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import CampingDetailMap from "./CampingDetailMap";
 
 export default function CampingDetail({ camping }: { camping: Camping }) {
   return (
@@ -42,25 +41,12 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2 text-gray-700">Location</h2>
         <div className="w-full h-[300px] bg-gray-200 rounded-lg flex items-center justify-center">
-          <MapContainer
-            className="w-full h-full rounded-2xl"
-            zoom={13}
-            maxZoom={18}
-            center={[camping.field_camping_location.lat, camping.field_camping_location.lon]}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker key={camping.nid} position={[camping.field_camping_location.lat, camping.field_camping_location.lon]}>
-              <Popup>{camping.title}</Popup>
-            </Marker>
-          </MapContainer>
+          <CampingDetailMap camping={camping} />
         </div>
       </div>
       <div className="mt-10 p-4 bg-blue-50 rounded-lg">
         <h3 className="text-lg font-semibold text-blue-800 mb-1">Owner</h3>
-        <p className="text-blue-700">{camping.field_owner_id?.target_id || "Unknown"}</p>
+        <p className="text-blue-700">{camping.field_owner_id.target_uuid || "Unknown"}</p>
       </div>
     </div>
   );
