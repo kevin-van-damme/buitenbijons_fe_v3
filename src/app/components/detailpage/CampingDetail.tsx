@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Camping } from "@/typesCampings";
-import CampingDetailMap from "./CampingDetailMap";
+import CampingDetailMap from "../leafletmap/CampingDetailMap";
 
 export default function CampingDetail({ camping }: { camping: Camping }) {
   return (
