@@ -1,9 +1,5 @@
 import Image from "next/image";
-
-interface SmallCardProps {
-  imageSrc: string;
-  title: string;
-}
+import type { SmallCardProps } from "@/typesFrontPageImages";
 
 const FilterCard = ({ imageSrc, title }: SmallCardProps) => {
   return (

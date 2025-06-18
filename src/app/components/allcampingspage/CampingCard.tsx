@@ -1,22 +1,25 @@
 import Link from "next/link";
 import type { Camping } from "@/typesCampings";
 import Image from "next/image";
+
 const CampingCard = ({ camping }: { camping: Camping }) => {
   return (
     <Link href={`/all-campings/${camping.uuid}`}>
-      <div>
-        <div>
+      <div className="flex flex-col w-full h-full bg-[#1a2b3c] rounded-2xl shadow-xl overflow-hidden text-white">
+        <div className="relative w-full aspect-[4/3]">
           <Image
             src={camping.field_camping_image.url}
-            width={350}
-            height={250}
             alt={camping.title}
-            className="w-auto h-auto aspect-[2/2] object-cover hover:scale-110 transition-all ease-in-out duration-500 rounded-2xl shadow-xl/30"
+            fill
+            className="object-cover transition-transform duration-500 hover:scale-110"
           />
         </div>
-        <p className="font-bold text-xl text-center p-2">{camping.title}</p>
+        <div className="flex-1 flex items-center justify-center p-4">
+          <p className="font-bold text-xl text-center">{camping.title}</p>
+        </div>
       </div>
     </Link>
   );
 };
+
 export default CampingCard;
