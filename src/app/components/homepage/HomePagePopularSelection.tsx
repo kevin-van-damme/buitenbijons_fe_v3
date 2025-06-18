@@ -1,12 +1,11 @@
+import Image from "next/image";
+import PopularSelectionCards from "./PopularSelectionCards";
+
 const HomePagePopularSelection = () => {
   return (
-    <div className="lg:w-6xl lg:mx-auto md:w-7xl md:mx-2">
+    <div className="max-w-screen-xl mx-auto px-4">
       <h3 className="text-4xl font-bold text-center mb-5 lg:text-left lg:mb-5 md:mb-5 md:text-left">Popular Locations</h3>
-      <ul className="flex flex-col gap-4 items-center lg:flex-row md:flex-row">
-        <li>Brugge</li>
-        <li>Durbuy</li>
-        <li>Namur</li>
-      </ul>
+      <PopularSelectionCards />
     </div>
   );
 };
