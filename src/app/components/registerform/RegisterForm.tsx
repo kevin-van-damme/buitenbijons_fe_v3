@@ -4,10 +4,9 @@ export default function RegisterForm() {
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Create New Account</h1>
 
       <form className="space-y-5">
-        {/* Email */}
         <div>
           <label htmlFor="email" className="block mb-1 font-medium text-gray-700">
-            Email address *
+            Email address <i className="text-red-700">*</i>
           </label>
           <input
             type="email"
@@ -20,11 +19,9 @@ export default function RegisterForm() {
             The email address is not made public. It will only be used if you need to be contacted about your account or for opt-in notifications.
           </p>
         </div>
-
-        {/* Username */}
         <div>
           <label htmlFor="username" className="block mb-1 font-medium text-gray-700">
-            Username *
+            Username <i className="text-red-700">*</i>
           </label>
           <input
             type="text"
@@ -37,11 +34,9 @@ export default function RegisterForm() {
             Several special characters are allowed, including space, period (.), hyphen (-), apostrophe (’), underscore (_) and the @ sign.
           </p>
         </div>
-
-        {/* Password */}
         <div>
           <label htmlFor="password" className="block mb-1 font-medium text-gray-700">
-            Password *
+            Password <i className="text-red-700">*</i>
           </label>
           <input
             type="password"
@@ -51,11 +46,9 @@ export default function RegisterForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
         </div>
-
-        {/* Confirm Password */}
         <div>
           <label htmlFor="confirmPassword" className="block mb-1 font-medium text-gray-700">
-            Confirm password *
+            Confirm password <i className="text-red-700">*</i>
           </label>
           <input
             type="password"
@@ -65,8 +58,6 @@ export default function RegisterForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
         </div>
-
-        {/* Picture upload */}
         <div>
           <label htmlFor="picture" className="block mb-1 font-medium text-gray-700">
             Picture
@@ -78,10 +69,8 @@ export default function RegisterForm() {
             accept="image/png, image/gif, image/jpeg, image/webp"
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
-          <p className="mt-1 text-sm text-gray-500">Your virtual face or picture. One file only. Max size: 100MB.</p>
+          <p className="mt-1 text-sm text-gray-500">Max size: 5MB</p>
         </div>
-
-        {/* Submit */}
         <button
           type="submit"
           className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition duration-300"

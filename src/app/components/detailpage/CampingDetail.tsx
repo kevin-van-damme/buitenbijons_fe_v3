@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Camping } from "@/typesCampings";
-import CampingDetailMap from "../leafletmap/CampingDetailMap";
+import Map from "../leafletmap/Map";
 
 export default function CampingDetail({ camping }: { camping: Camping }) {
   return (
@@ -41,7 +41,7 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2 text-gray-700">Location</h2>
         <div className="w-full h-[300px] bg-gray-200 rounded-lg flex items-center justify-center">
-          <CampingDetailMap camping={camping} />
+          <Map camping={camping} />
         </div>
       </div>
       <div className="mt-10 p-4 bg-blue-50 rounded-lg">
