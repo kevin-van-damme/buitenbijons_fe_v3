@@ -1,10 +1,8 @@
 export default function LoginForm() {
   return (
-    <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg">
+    <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg md:mt-50 md:mb-50">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Log In</h1>
-
       <form className="space-y-5">
-        {/* Username */}
         <div>
           <label htmlFor="username" className="block mb-1 font-medium text-gray-700">
             Username
@@ -17,8 +15,6 @@ export default function LoginForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
         </div>
-
-        {/* Password */}
         <div>
           <label htmlFor="password" className="block mb-1 font-medium text-gray-700">
             Password
@@ -31,11 +27,9 @@ export default function LoginForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
         </div>
-
-        {/* Submit */}
         <button
           type="submit"
-          className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition duration-300"
+          className="w-full py-3 bg-slate-600 hover:bg-slate-300 hover:text-black hover:cursor-pointer text-white font-semibold rounded-lg shadow-md transition duration-300"
         >
           Log In
         </button>
