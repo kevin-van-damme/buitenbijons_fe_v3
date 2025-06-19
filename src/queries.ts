@@ -1,5 +1,6 @@
 import type { Campings, Camping } from "./typesCampings";
 import { transformCampingResponse } from "./helpers";
+import { transformArticleResponse, transformArticlesResponse } from "./helpers";
 import { Article, Articles } from "./typesArticles";
 import { Owner, Owners } from "./typesOwners";
 //GET ALL CAMPINGS
@@ -37,7 +38,8 @@ export const getAllArticles = async (): Promise<Articles> => {
         revalidate: 60,
       },
     });
-    const data: Articles = await res.json();
+    const raw = await res.json();
+    const data = transformArticlesResponse(raw);
     return data;
   } catch (error) {
     console.error("Error fetching articles:", error);
@@ -47,8 +49,9 @@ export const getAllArticles = async (): Promise<Articles> => {
 export const getArticleById = async (id: string): Promise<Article> => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/articles/${id}`);
-    const data: Article = await res.json();
-    return data;
+    const raw = await res.json();
+    const article = transformArticleResponse(raw[0]);
+    return article;
   } catch (error) {
     console.error("Error fetching article:", error);
     throw error;

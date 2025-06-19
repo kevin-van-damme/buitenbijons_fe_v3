@@ -1,5 +1,6 @@
 import { Campings, Camping, CampingFromBackend } from "@/typesCampings";
 import { Owner, Owners, OwnersFromBackend } from "./typesOwners";
+import { Article, Articles, ArticlesFromBackend } from "./typesArticles";
 
 export function transformCampingResponse(item: CampingFromBackend): Camping {
   return {
@@ -93,5 +94,62 @@ export function transformOwnerResponse(item: OwnersFromBackend): Owner {
 
 export function transformOwnersResponse(raw: any): Owners {
   const data: Owner[] = raw.map((item: any) => transformOwnerResponse(item));
+  return { data };
+}
+
+export function transformArticleResponse(item: ArticlesFromBackend): Article {
+  return {
+    nid: item.nid?.[0]?.value ?? 0,
+    uuid: item.uuid?.[0]?.value ?? "",
+    vid: item.vid?.[0]?.value ?? 0,
+    langcode: item.langcode?.[0]?.value ?? "",
+    type: item.type?.[0]?.target_id ?? "",
+    revision_timestamp: item.revision_timestamp?.[0]?.value ? new Date(item.revision_timestamp[0].value) : new Date(),
+    revision_uid: item.revision_uid?.[0]?.target_id ?? 0,
+    revision_log: item.revision_log?.[0] ?? null,
+    status: item.status?.[0]?.value ?? false,
+    uid: item.uid?.[0]?.target_id ?? 0,
+    title: item.title?.[0]?.value ?? "",
+    created: item.created?.[0]?.value ? new Date(item.created[0].value) : new Date(),
+    changed: item.changed?.[0]?.value ? new Date(item.changed[0].value) : new Date(),
+    promote: item.promote?.[0]?.value ?? false,
+    sticky: item.sticky?.[0]?.value ?? false,
+    default_langcode: item.default_langcode?.[0]?.value ?? false,
+    revision_translation_affected: item.revision_translation_affected?.[0]?.value ?? false,
+    path: {
+      alias: item.path?.[0]?.alias ?? null,
+      pid: item.path?.[0]?.pid ?? null,
+      langcode: item.path?.[0]?.langcode ?? "",
+    },
+    body: {
+      value: item.body?.[0]?.value ?? "",
+      format: item.body?.[0]?.format ?? "",
+      processed: item.body?.[0]?.processed ?? "",
+      summary: item.body?.[0]?.summary ?? "",
+    },
+    comment: {
+      status: item.comment?.[0]?.status ?? 0,
+      cid: item.comment?.[0]?.cid ?? 0,
+      last_comment_timestamp: item.comment?.[0]?.last_comment_timestamp ?? 0,
+      last_comment_name: item.comment?.[0]?.last_comment_name ?? null,
+      last_comment_uid: item.comment?.[0]?.last_comment_uid ?? 0,
+      comment_count: item.comment?.[0]?.comment_count ?? 0,
+    },
+    field_image: {
+      target_id: item.field_image?.[0]?.target_id ?? 0,
+      alt: item.field_image?.[0]?.alt ?? "",
+      title: item.field_image?.[0]?.title ?? "",
+      width: item.field_image?.[0]?.width ?? 0,
+      height: item.field_image?.[0]?.height ?? 0,
+      target_type: item.field_image?.[0]?.target_type ?? "",
+      target_uuid: item.field_image?.[0]?.target_uuid ?? "",
+      url: item.field_image?.[0]?.url ?? "",
+    },
+    field_tags: item.field_tags ?? [],
+  };
+}
+
+export function transformArticlesResponse(raw: any): Articles {
+  const data: Article[] = raw.map((item: any) => transformArticleResponse(item));
   return { data };
 }
