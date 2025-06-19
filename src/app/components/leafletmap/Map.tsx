@@ -11,6 +11,7 @@ const Map = ({ camping }: { camping: Camping }) => {
         zoom={13}
         maxZoom={18}
         center={[camping.field_camping_location.lat, camping.field_camping_location.lon]}
+        key={Math.random()}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -23,7 +24,3 @@ const Map = ({ camping }: { camping: Camping }) => {
 };
 
 export default Map;
-
-{
-  /* <CampingDetailMap camping={camping} /> */
-}

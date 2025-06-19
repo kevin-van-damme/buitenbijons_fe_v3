@@ -1,7 +1,6 @@
-"use client";
 import Image from "next/image";
 import { Camping } from "@/typesCampings";
-import Map from "../leafletmap/Map";
+import CampingDetailMap from "../leafletmap/CampingDetailMap";
 
 export default function CampingDetail({ camping }: { camping: Camping }) {
   return (
@@ -22,7 +21,12 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
       </div>
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2 text-gray-700">Description</h2>
-        <p className="text-gray-700 leading-relaxed">{camping.field_camping_description?.value || "No description available."}</p>
+        <div
+          className="text-gray-700 leading-relaxed "
+          dangerouslySetInnerHTML={{
+            __html: camping.field_camping_description || "No description available.",
+          }}
+        />
       </div>
       <div className="mb-6 flex flex-wrap gap-4">
         <div className="p-4 bg-gray-100 rounded-lg shadow-sm flex-1">
@@ -36,12 +40,17 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
       </div>
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2 text-gray-700">Camping Rules</h2>
-        <p className="text-gray-700">{camping.field_camping_rules?.value || "No rules specified."}</p>
+        <div
+          className="text-gray-700 leading-relaxed "
+          dangerouslySetInnerHTML={{
+            __html: camping.field_camping_rules || "No rules specified.",
+          }}
+        />
       </div>
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2 text-gray-700">Location</h2>
         <div className="w-full h-[300px] bg-gray-200 rounded-lg flex items-center justify-center">
-          <Map camping={camping} />
+          <CampingDetailMap camping={camping} />
         </div>
       </div>
       <div className="mt-10 p-4 bg-blue-50 rounded-lg">
