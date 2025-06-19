@@ -45,6 +45,14 @@ const Footer = () => {
               <span>📧</span>
             </a>
           </div>
+          <div className="flex space-x-4">
+            <a href="/cookiepage" className="hover:underline">
+              <span>Cookies</span>
+            </a>
+            <a href="privacypage" className="hover:underline">
+              <span>Privacy Policy</span>
+            </a>
+          </div>
         </div>
       </div>
       <div className="border-t border-gray-600 mt-10 pt-6 text-center text-sm text-gray-400">

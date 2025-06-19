@@ -14,7 +14,15 @@ const MultiRangeSlider = ({ min, max }: { min: string; max: string }) => {
     <div className="w-full p-4 bg-white rounded-2xl shadow-md">
       <label className="block text-lg font-semibold text-gray-800 mb-4">Price Range (€)</label>
 
-      <RangeSlider value={value} onInput={handleInput} min={0} max={150} step={1} className="w-full slider-thumb" />
+      <RangeSlider
+        value={value}
+        onInput={handleInput}
+        min={0}
+        max={150}
+        step={1}
+        className="w-full slider-thumb"
+        ariaLabel={["leftslider", "rightslider"]}
+      />
 
       <div className="flex justify-between mt-4 text-sm font-medium text-gray-700">
         <span>€{value[0]}</span>

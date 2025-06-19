@@ -27,7 +27,7 @@ const HeaderNavDropDown = () => {
           </li>
           <li>
             <Link href="/register" className="hover:text-slate-700 transition-all">
-              Sign Up
+              Register
             </Link>
           </li>
         </ul>
