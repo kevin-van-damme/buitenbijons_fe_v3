@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function LoginForm() {
   return (
     <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg md:mt-50 md:mb-74">
@@ -34,6 +35,12 @@ export default function LoginForm() {
           Log In
         </button>
       </form>
+      <p className="text-center mt-5">
+        Don't have an account?{" "}
+        <Link href="/register" className="text-blue-500 hover:text-blue-900 underline">
+          Click here to sign up.
+        </Link>
+      </p>
     </div>
   );
 }

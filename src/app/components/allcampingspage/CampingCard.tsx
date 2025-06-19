@@ -11,6 +11,7 @@ const CampingCard = ({ camping }: { camping: Camping }) => {
             src={camping.field_camping_image.url}
             alt={camping.title}
             fill
+            sizes="100%"
             className="object-cover transition-transform duration-500 hover:scale-110"
           />
         </div>

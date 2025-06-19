@@ -78,6 +78,12 @@ export default function RegisterForm() {
           Create New Account
         </button>
       </form>
+      <p className="text-center mt-5 flex justify-center gap-1">
+        Already have an account?
+        <a href="/login" className="text-blue-600 hover:underline">
+          Log In
+        </a>
+      </p>
     </div>
   );
 }

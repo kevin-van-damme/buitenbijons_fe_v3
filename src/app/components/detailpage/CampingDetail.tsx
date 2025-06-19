@@ -10,6 +10,7 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
           src={camping.field_camping_image?.url || "/placeholder.jpg"}
           alt={camping.field_camping_image?.alt || camping.title}
           fill
+          sizes="100%"
           className="object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
