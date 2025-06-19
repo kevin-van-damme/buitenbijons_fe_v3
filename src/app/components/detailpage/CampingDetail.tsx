@@ -8,6 +8,7 @@ import { useCountry } from "@/hooks/useCountry";
 export default function CampingDetail({ camping }: { camping: Camping }) {
   const { city } = useCity(camping.field_camping_city?.target_uuid);
   const { country } = useCountry(camping.field_camping_country?.target_uuid);
+
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white rounded-2xl shadow-lg mt-10">
       <div className="relative w-full h-[400px] rounded-xl overflow-hidden mb-6 shadow-md">

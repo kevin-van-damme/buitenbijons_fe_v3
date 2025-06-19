@@ -21,15 +21,9 @@ export default async function CampingDetailPage(props: PageProps) {
 
 export async function generateStaticParams() {
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-  const res = await fetch(`${apiBaseUrl}api/v1/all-campings`, {
-    next: {
-      revalidate: 60,
-    },
-  });
-
+  const res = await fetch(`${apiBaseUrl}api/v1/all-campings`);
   const data: Camping[] = await res.json();
-  return data.map((camping: Camping) => ({
+  return data.map((camping) => ({
     id: camping.uuid.toString(),
   }));
 }
