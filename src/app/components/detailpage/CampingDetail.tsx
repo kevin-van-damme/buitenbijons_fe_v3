@@ -1,8 +1,27 @@
+"use client";
 import Image from "next/image";
 import { Camping } from "@/typesCampings";
 import CampingDetailMap from "../leafletmap/CampingDetailMap";
+import { getCityById } from "@/queries";
+import { useEffect, useState } from "react";
+import { City } from "@/typesCities";
 
 export default function CampingDetail({ camping }: { camping: Camping }) {
+  const [city, setCity] = useState<City | null>(null);
+  useEffect(() => {
+    const fetchCity = async () => {
+      if (camping?.field_camping_city?.target_uuid) {
+        try {
+          const cityData = await getCityById(camping.field_camping_city.target_uuid);
+          setCity(cityData);
+        } catch (error) {
+          console.error("Failed to fetch city", error);
+        }
+      }
+    };
+    fetchCity();
+  }, [camping]);
+  console.log("city", city);
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white rounded-2xl shadow-lg mt-10">
       <div className="relative w-full h-[400px] rounded-xl overflow-hidden mb-6 shadow-md">
@@ -17,7 +36,7 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
       <div className="mb-6">
         <h1 className="text-4xl font-bold text-gray-800 mb-2">{camping.title}</h1>
         <p className="text-lg text-gray-600 flex items-center">
-          📍 {camping.field_camping_city?.target_id}, {camping.field_camping_country?.target_id}
+          📍 {city?.name}, {camping.field_camping_country?.target_id}
         </p>
       </div>
       <div className="mb-6">

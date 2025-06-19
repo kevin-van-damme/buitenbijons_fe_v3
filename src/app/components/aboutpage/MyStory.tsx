@@ -7,7 +7,7 @@ const MyStory = async () => {
 
   return (
     <>
-      <div className="flex justify-between gap-20 my-40">
+      <div className="md:flex justify-center items-center gap-20 md:mb-60 md:mt-21">
         <div className="">
           <Image
             src={article.field_image.url}
@@ -17,7 +17,7 @@ const MyStory = async () => {
             className="w-full h-full object-cover block rounded-xl"
           />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: article.body.processed }} className="leading-8 text-center" />
+        <div dangerouslySetInnerHTML={{ __html: article.body.processed }} className="leading-8 text-center mt-10" />
       </div>
     </>
   );

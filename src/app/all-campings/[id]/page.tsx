@@ -2,11 +2,14 @@ import CampingDetail from "@/app/components/detailpage/CampingDetail";
 import { getCampingById } from "@/queries";
 import type { Camping } from "@/typesCampings";
 
+export const dynamicParams = true;
+
 type PageProps = {
   params: { id: string };
 };
 
-export default async function CampingDetailPage({ params }: PageProps) {
+export default async function CampingDetailPage(props: PageProps) {
+  const { params } = await props;
   const camping = await getCampingById(params.id);
 
   if (!camping) {
@@ -17,11 +20,14 @@ export default async function CampingDetailPage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const res = await fetch("https://be-buitenbijons-test.ddev.site:33001/api/v1/campings", {
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  const res = await fetch(`${apiBaseUrl}api/v1/all-campings`, {
     next: {
       revalidate: 60,
     },
   });
+
   const data: Camping[] = await res.json();
   return data.map((camping: Camping) => ({
     id: camping.uuid.toString(),

@@ -1,6 +1,8 @@
 import { Campings, Camping, CampingFromBackend } from "@/typesCampings";
 import { Owner, Owners, OwnersFromBackend } from "./typesOwners";
 import { Article, Articles, ArticlesFromBackend } from "./typesArticles";
+import { City, Cities, CityFromBackend } from "./typesCities";
+import { Country, Countries, CountryFromBackend } from "./typesCountries";
 
 export function transformCampingResponse(item: CampingFromBackend): Camping {
   return {
@@ -151,5 +153,57 @@ export function transformArticleResponse(item: ArticlesFromBackend): Article {
 
 export function transformArticlesResponse(raw: any): Articles {
   const data: Article[] = raw.map((item: any) => transformArticleResponse(item));
+  return { data };
+}
+
+export function transformCityResponse(city: CityFromBackend): City {
+  return {
+    tid: city.tid[0]?.value ?? 0,
+    uuid: city.uuid[0]?.value ?? "",
+    revision_id: city.revision_id[0]?.value ?? 0,
+    langcode: city.langcode[0]?.value ?? "",
+    vid: city.vid[0]?.target_id ?? "",
+    revision_created: city.revision_created[0]?.value ?? "",
+    status: city.status[0]?.value ?? false,
+    name: city.name[0]?.value ?? "",
+    description: city.description[0]?.processed ?? "",
+    weight: city.weight[0]?.value ?? 0,
+    changed: city.changed[0]?.value ?? "",
+    default_langcode: city.default_langcode[0]?.value ?? false,
+    revision_translation_affected: city.revision_translation_affected[0]?.value ?? false,
+    path_langcode: city.path[0]?.langcode ?? "",
+    latitude: city.field_latitude[0]?.value ? parseFloat(city.field_latitude[0].value) : undefined,
+    longitude: city.field_longitude[0]?.value ? parseFloat(city.field_longitude[0].value) : undefined,
+    postal_code: city.field_postal_code[0]?.value ?? undefined,
+    province: city.field_province[0]?.value ?? undefined,
+  };
+}
+
+export function transformCitiesResponse(raw: any): Cities {
+  const data: City[] = raw.map((item: any) => transformCityResponse(item));
+  return { data };
+}
+
+export function transformCountry(country: CountryFromBackend): Country {
+  return {
+    tid: country.tid[0]?.value ?? 0,
+    uuid: country.uuid[0]?.value ?? "",
+    revision_id: country.revision_id[0]?.value ?? 0,
+    langcode: country.langcode[0]?.value ?? "",
+    vid: country.vid[0]?.target_id ?? "",
+    revision_created: country.revision_created[0]?.value ?? "",
+    status: country.status[0]?.value ?? false,
+    name: country.name[0]?.value ?? "",
+    description: country.description[0]?.processed ?? "",
+    weight: country.weight[0]?.value ?? 0,
+    changed: country.changed[0]?.value ?? "",
+    default_langcode: country.default_langcode[0]?.value ?? false,
+    revision_translation_affected: country.revision_translation_affected[0]?.value ?? false,
+    path_langcode: country.path[0]?.langcode ?? "",
+  };
+}
+
+export function transformCountriesResponse(raw: any): Countries {
+  const data: Country[] = raw.map((item: any) => transformCountry(item));
   return { data };
 }

@@ -2,8 +2,7 @@ import { getAllCampings } from "@/queries";
 import { Camping, Campings } from "@/typesCampings";
 import { transformCampingsResponse } from "@/helpers";
 import CampingCard from "../components/allcampingspage/CampingCard";
-import AllCampingsMap from "../components/leafletmap/AllCampingsMap";
-import MultiRangeSlider from "../components/allcampingsfilter/MultiRangeSilder";
+import AllCampingsMap from "../components/all_leafletmap/AllCampingsMap";
 import CampingsSearchBar from "../components/allcampingsfilter/CampingsSearchBar";
 
 export default async function AllCampingsPage() {
@@ -12,7 +11,7 @@ export default async function AllCampingsPage() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center mt-20 mb-25 lg:mt-14 md:mt-14">
+      <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center mb-4 lg:mb-10 md:mb-10">
         <AllCampingsMap campings={campings} />
       </div>
       <div>
