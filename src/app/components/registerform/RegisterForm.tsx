@@ -1,7 +1,7 @@
 export default function RegisterForm() {
   return (
     <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg">
-      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Create New Account</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Become a member</h1>
 
       <form className="space-y-5">
         <div>

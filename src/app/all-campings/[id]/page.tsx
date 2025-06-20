@@ -4,12 +4,7 @@ import type { Camping } from "@/typesCampings";
 
 export const dynamicParams = true;
 
-type PageProps = {
-  params: { id: string };
-};
-
-export default async function CampingDetailPage(props: PageProps) {
-  const { params } = await props;
+export default async function CampingDetailPage({ params }) {
   const camping = await getCampingById(params.id);
 
   if (!camping) {

@@ -1,11 +1,11 @@
 import { getAllCampings } from "@/queries";
-import { Camping, Campings } from "@/typesCampings";
+import { Camping } from "@/typesCampings";
 import { transformCampingsResponse } from "@/helpers";
 import CampingCard from "../components/allcampingspage/CampingCard";
 import AllCampingsMap from "../components/all_leafletmap/AllCampingsMap";
 import CampingsSearchBar from "../components/allcampingsfilter/CampingsSearchBar";
 
-export default async function AllCampingsPage() {
+export default async function AllCampingsPage({ searchParams }: { searchParams: { name: string; min: string; max: string } }) {
   const rawData = await getAllCampings();
   const campings = transformCampingsResponse(rawData);
 

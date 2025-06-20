@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <footer className="bg-[#1f2937] text-white py-10 mt-20">
@@ -10,24 +12,24 @@ const Footer = () => {
           <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2">
             <li>
-              <a href="/" className="hover:underline">
+              <Link href="/" className="hover:underline">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/all-campings" className="hover:underline">
+              <Link href="/all-campings" className="hover:underline">
                 All Campings
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/aboutpage" className="hover:underline">
+              <Link href="/aboutpage" className="hover:underline">
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/contactpage" className="hover:underline">
+              <Link href="/contactpage" className="hover:underline">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -35,23 +37,23 @@ const Footer = () => {
           <h4 className="text-xl font-semibold mb-4">Stay Connected</h4>
           <p className="text-sm mb-2">Follow us on social media:</p>
           <div className="flex space-x-4">
-            <a href="#" className="hover:scale-110 transition">
+            <Link href="#" className="hover:scale-110 transition">
               <span>🌿</span>
-            </a>
-            <a href="#" className="hover:scale-110 transition">
+            </Link>
+            <Link href="#" className="hover:scale-110 transition">
               <span>📸</span>
-            </a>
-            <a href="#" className="hover:scale-110 transition">
+            </Link>
+            <Link href="#" className="hover:scale-110 transition">
               <span>📧</span>
-            </a>
+            </Link>
           </div>
           <div className="flex space-x-4">
-            <a href="/cookiepage" className="hover:underline">
+            <Link href="/cookiepage" className="hover:underline">
               <span>Cookies</span>
-            </a>
-            <a href="privacypage" className="hover:underline">
+            </Link>
+            <Link href="privacypage" className="hover:underline">
               <span>Privacy Policy</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -76,48 +76,15 @@ export interface LocationField {
 }
 
 export interface CampingFromBackend {
-  nid: {
-    value: number;
-  }[];
-  uuid: {
-    value: string;
-  }[];
-  vid: {
-    value: number;
-  }[];
-  langcode: {
-    value: string;
-  }[];
-  type: {
-    target_id: string;
-    target_type: string;
-    target_uuid: string;
-  }[];
-  revision_timestamp: {
-    value: Date;
-  }[];
-  revision_uid: {
-    target_id: number;
-    target_type: string;
-    target_uuid: string;
-  }[];
-  status: {
-    value: boolean;
-  }[];
-  uid: {
-    target_id: number;
-    target_type: string;
-    target_uuid: string;
-  }[];
-  title: {
-    value: string;
-  }[];
-  created: {
-    value: Date;
-  }[];
-  changed: {
-    value: Date;
-  }[];
+  nid: { value: number }[];
+  uuid: { value: string }[];
+  vid: { value: number }[];
+  langcode: { value: string }[];
+  type: { target_id: string; target_type: string; target_uuid: string }[];
+  revision_uid: { target_id: number; target_type: string; target_uuid: string }[];
+  status: { value: boolean }[];
+  uid: { target_id: number; target_type: string; target_uuid: string }[];
+  title: { value: string }[];
   field_camping_image: {
     target_id: number;
     alt: string;
@@ -140,55 +107,39 @@ export interface CampingFromBackend {
     geohash: string;
     latlon: string;
   }[];
-  field_camping_price: {
-    value: string;
-  }[];
+  field_camping_price: { value: string }[];
   field_camping_rules: {
-    value: TextField;
+    value: string;
     format: string;
     processed: string;
     summary: string;
   }[];
-  field_camping_checkinout: {
-    value: string;
-  }[];
+  field_camping_checkinout: { value: string }[];
   field_owner_id: {
-    target_id: EntityReference;
+    target_id: number | null;
     target_type: string;
     target_uuid: string;
     url: string;
   }[];
-  sticky: {
-    value: boolean;
-  }[];
-  promote: {
-    value: boolean;
-  }[];
-  default_langcode: {
-    value: boolean;
-  }[];
-  revision_translation_affected: {
-    value: boolean;
-  }[];
-  path: {
-    alias: string;
-    pid: number;
-    langcode: string;
-  }[];
+  sticky: { value: boolean }[];
+  promote: { value: boolean }[];
+  default_langcode: { value: boolean }[];
+  revision_translation_affected: { value: boolean }[];
+  path: { alias: string; pid: number; langcode: string }[];
   field_camping_city: {
-    target_id: EntityReference;
+    target_id: number | null;
     target_type: string;
     target_uuid: string;
     url: string;
   }[];
   field_camping_country: {
-    target_id: EntityReference;
+    target_id: number | null;
     target_type: string;
     target_uuid: string;
     url: string;
   }[];
   field_camping_description: {
-    value: TextField;
+    value: string;
     format: string;
     processed: string;
     summary: string;

@@ -23,7 +23,7 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
       <div className="mb-6">
         <h1 className="text-4xl font-bold text-gray-800 mb-2">{camping.title}</h1>
         <p className="text-lg text-gray-600 flex items-center">
-          📍 {city?.weight}, {country?.name}
+          📍 {city?.name}, {country?.name}
         </p>
       </div>
       <div className="mb-6">
@@ -31,7 +31,7 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
         <div
           className="text-gray-700 leading-relaxed "
           dangerouslySetInnerHTML={{
-            __html: camping.field_camping_description || "No description available.",
+            __html: camping.field_camping_description.value || "No description available.",
           }}
         />
       </div>
@@ -50,7 +50,7 @@ export default function CampingDetail({ camping }: { camping: Camping }) {
         <div
           className="text-gray-700 leading-relaxed "
           dangerouslySetInnerHTML={{
-            __html: camping.field_camping_rules || "No rules specified.",
+            __html: camping.field_camping_rules.value || "No rules specified.",
           }}
         />
       </div>

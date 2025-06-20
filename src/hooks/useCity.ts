@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getCityById } from "@/queries";
 import { City } from "@/typesCities";
 import type { AppError } from "@/typeError";
-import App from "next/app";
 
 export function useCity(target_uuid?: string) {
   const [city, setCity] = useState<City>();

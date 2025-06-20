@@ -11,13 +11,10 @@ export function transformCampingResponse(item: CampingFromBackend): Camping {
     vid: item.vid?.[0]?.value ?? 0,
     langcode: item.langcode?.[0]?.value ?? "",
     type: item.type?.[0]?.target_id ?? "",
-    revision_timestamp: item.revision_timestamp?.[0]?.value ?? "",
     revision_uid: item.revision_uid?.[0]?.target_id ?? 0,
     status: item.status?.[0]?.value ?? false,
     uid: item.uid?.[0]?.target_id ?? 0,
     title: item.title?.[0]?.value ?? "",
-    created: item.created?.[0]?.value ?? "",
-    changed: item.changed?.[0]?.value ?? "",
     promote: item.promote?.[0]?.value ?? false,
     sticky: item.sticky?.[0]?.value ?? false,
     default_langcode: item.default_langcode?.[0]?.value ?? false,
@@ -28,9 +25,24 @@ export function transformCampingResponse(item: CampingFromBackend): Camping {
       langcode: item.path?.[0]?.langcode ?? "",
     },
     field_camping_checkinout: item.field_camping_checkinout?.[0]?.value ?? "",
-    field_camping_city: item.field_camping_city?.[0]?.target_id ?? 0,
-    field_camping_country: item.field_camping_country?.[0]?.target_id ?? 0,
-    field_camping_description: item.field_camping_description?.[0]?.value ?? "",
+    field_camping_city: {
+      target_id: item.field_camping_city?.[0]?.target_id ?? 0,
+      target_type: item.field_camping_city?.[0]?.target_type ?? "",
+      target_uuid: item.field_camping_city?.[0]?.target_uuid ?? "",
+      url: item.field_camping_city?.[0]?.url ?? "",
+    },
+    field_camping_country: {
+      target_id: item.field_camping_country?.[0]?.target_id ?? 0,
+      target_type: item.field_camping_country?.[0]?.target_type ?? "",
+      target_uuid: item.field_camping_country?.[0]?.target_uuid ?? "",
+      url: item.field_camping_country?.[0]?.url ?? "",
+    },
+    field_camping_description: {
+      value: item.field_camping_description?.[0]?.value ?? "",
+      format: item.field_camping_description?.[0]?.format ?? "",
+      processed: item.field_camping_description?.[0]?.processed ?? "",
+      summary: item.field_camping_description?.[0]?.summary ?? "",
+    },
     field_camping_image: {
       target_id: item.field_camping_image?.[0]?.target_id ?? 0,
       alt: item.field_camping_image?.[0]?.alt ?? "",
@@ -54,8 +66,18 @@ export function transformCampingResponse(item: CampingFromBackend): Camping {
       latlon: item.field_camping_location?.[0]?.latlon ?? "",
     },
     field_camping_price: item.field_camping_price?.[0]?.value ?? "",
-    field_camping_rules: item.field_camping_rules?.[0]?.value ?? "",
-    field_owner_id: item.field_owner_id?.[0]?.target_id ?? 0,
+    field_camping_rules: {
+      value: item.field_camping_rules?.[0]?.value ?? "",
+      format: item.field_camping_rules?.[0]?.format ?? "",
+      processed: item.field_camping_rules?.[0]?.processed ?? "",
+      summary: item.field_camping_rules?.[0]?.summary ?? "",
+    },
+    field_owner_id: {
+      target_id: item.field_owner_id?.[0]?.target_id ?? 0,
+      target_type: item.field_owner_id?.[0]?.target_type ?? "",
+      target_uuid: item.field_owner_id?.[0]?.target_uuid ?? "",
+      url: item.field_owner_id?.[0]?.url ?? "",
+    },
   };
 }
 
