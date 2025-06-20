@@ -1,9 +1,18 @@
+"use client";
+import { useActionState } from "react";
+import Link from "next/link";
+import { handleRegisterFormSubmit } from "@/app/server-actions/handleRegisterFormSubmit"; // adjust your import path
 export default function RegisterForm() {
+  const [state, formAction] = useActionState(handleRegisterFormSubmit, { success: false });
+
   return (
     <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Become a member</h1>
 
-      <form className="space-y-5">
+      {state?.success && <div className="mb-4 p-3 text-green-700 bg-green-100 rounded-lg">Account created successfully!</div>}
+      {state?.error && <div className="mb-4 p-3 text-red-700 bg-red-100 rounded-lg">{state.error}</div>}
+
+      <form className="space-y-5" noValidate action={formAction}>
         <div>
           <label htmlFor="email" className="block mb-1 font-medium text-gray-700">
             Email address <i className="text-red-700">*</i>
@@ -19,6 +28,7 @@ export default function RegisterForm() {
             The email address is not made public. It will only be used if you need to be contacted about your account or for opt-in notifications.
           </p>
         </div>
+
         <div>
           <label htmlFor="username" className="block mb-1 font-medium text-gray-700">
             Username <i className="text-red-700">*</i>
@@ -34,6 +44,7 @@ export default function RegisterForm() {
             Several special characters are allowed, including space, period (.), hyphen (-), apostrophe (’), underscore (_) and the @ sign.
           </p>
         </div>
+
         <div>
           <label htmlFor="password" className="block mb-1 font-medium text-gray-700">
             Password <i className="text-red-700">*</i>
@@ -46,6 +57,7 @@ export default function RegisterForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
         </div>
+
         <div>
           <label htmlFor="confirmPassword" className="block mb-1 font-medium text-gray-700">
             Confirm password <i className="text-red-700">*</i>
@@ -58,6 +70,7 @@ export default function RegisterForm() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
         </div>
+
         <div>
           <label htmlFor="picture" className="block mb-1 font-medium text-gray-700">
             Picture
@@ -71,6 +84,7 @@ export default function RegisterForm() {
           />
           <p className="mt-1 text-sm text-gray-500">Max size: 5MB</p>
         </div>
+
         <button
           type="submit"
           className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition duration-300"
@@ -78,11 +92,12 @@ export default function RegisterForm() {
           Create New Account
         </button>
       </form>
+
       <p className="text-center mt-5 flex justify-center gap-1">
         Already have an account?
-        <a href="/login" className="text-blue-600 hover:underline">
+        <Link href="/login" className="text-blue-600 hover:underline">
           Log In
-        </a>
+        </Link>
       </p>
     </div>
   );
