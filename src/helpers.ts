@@ -10,11 +10,29 @@ export function transformCampingResponse(item: CampingFromBackend): Camping {
     uuid: item.uuid?.[0]?.value ?? "",
     vid: item.vid?.[0]?.value ?? 0,
     langcode: item.langcode?.[0]?.value ?? "",
-    type: item.type?.[0]?.target_id ?? "",
-    revision_uid: item.revision_uid?.[0]?.target_id ?? 0,
+    type: {
+      target_id: item.type?.[0]?.target_id ?? "",
+      target_type: item.type?.[0]?.target_type ?? "",
+      target_uuid: item.type?.[0]?.target_uuid ?? "",
+    },
+    revision_timestamp: new Date(item.revision_timestamp?.[0]?.value ?? ""),
+    revision_uid: {
+      target_id: item.revision_uid?.[0]?.target_id ?? 0,
+      target_type: item.revision_uid?.[0]?.target_type ?? "",
+      target_uuid: item.revision_uid?.[0]?.target_uuid ?? "",
+      url: item.revision_uid?.[0]?.url ?? "",
+    },
+    revision_log: item.revision_log ?? [],
     status: item.status?.[0]?.value ?? false,
-    uid: item.uid?.[0]?.target_id ?? 0,
+    uid: {
+      target_id: item.uid?.[0]?.target_id ?? 0,
+      target_type: item.uid?.[0]?.target_type ?? "",
+      target_uuid: item.uid?.[0]?.target_uuid ?? "",
+      url: item.uid?.[0]?.url ?? "",
+    },
     title: item.title?.[0]?.value ?? "",
+    created: new Date(item.created?.[0]?.value ?? ""),
+    changed: new Date(item.changed?.[0]?.value ?? ""),
     promote: item.promote?.[0]?.value ?? false,
     sticky: item.sticky?.[0]?.value ?? false,
     default_langcode: item.default_langcode?.[0]?.value ?? false,
@@ -81,8 +99,8 @@ export function transformCampingResponse(item: CampingFromBackend): Camping {
   };
 }
 
-export function transformCampingsResponse(raw: any): Campings {
-  const data: Camping[] = raw.map((item: any) => transformCampingResponse(item));
+export function transformCampingsResponse(raw: CampingFromBackend[]): Campings {
+  const data: Camping[] = raw.map((item) => transformCampingResponse(item));
   return { data };
 }
 
